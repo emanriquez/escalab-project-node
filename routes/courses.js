@@ -10,6 +10,7 @@ const {
     list,
     listLeasons,
 } = require("../controllers/courses");
+
 const { requireSignin, isAuth, isAdmin } = require("../controllers/auth");
 const { userById } = require("../controllers/user");
 
