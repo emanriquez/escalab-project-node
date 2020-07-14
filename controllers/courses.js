@@ -4,6 +4,8 @@ const fs = require("fs");
 const Course = require("../models/courses");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
+
+
 exports.courseById = (req, res, next, id) => {
     Course.findById(id).exec((err, course) => {
         if (err || !course) {
@@ -58,8 +60,8 @@ exports.create = (req, res) => {
                     error: "Image should be less than 1mb in size"
                 });
             }
-            product.photo.data = fs.readFileSync(files.photo.path);
-            product.photo.contentType = files.photo.type;
+            course.photo.data = fs.readFileSync(files.photo.path);
+            course.photo.contentType = files.photo.type;
         }
 
         course.save((err, result) => {
@@ -81,6 +83,9 @@ exports.update = (req, res) => {
    
 };
 
+exports.listLeasons =   (req, res) => {
+   
+};
 
 
 exports.list = (req, res) => {
@@ -96,10 +101,10 @@ exports.list = (req, res) => {
         .exec((err, course) => {
             if (err) {
                 return res.status(400).json({
-                    error: "Products not found"
+                    error: "Course not found"
                 });
             }
-            res.json(products);
+            res.json(course);
         });
 };
 

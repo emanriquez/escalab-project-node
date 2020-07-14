@@ -24,6 +24,8 @@ const courseSchema = new mongoose.Schema(
             required: true
         },
 
+       
+
         photo: {
             data: Buffer,
             contentType: String
