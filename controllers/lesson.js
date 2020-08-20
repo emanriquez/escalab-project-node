@@ -1,51 +1,48 @@
 const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
-const Course = require("../models/courses");
+const Lesson = require("../models/lessons");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
-//COURSE ID
-exports.courseById = (req, res, next, id) => {
-    Course.findById(id).exec((err, course) => {
-        if (err || !course) {
+
+//LEASSON ID
+exports.lessonById = (req, res, next, id) => {
+    Lesson.findById(id).exec((err, lessons) => {
+        if (err || !lessons) {
             return res.status(400).json({
                 error: "Course not found"
             });
         }
-        req.course = course;
+        req.lessons = lessons;
         next();
     });
 };
 
 
-//READ COURSE
+//LEASON READ 
 exports.read = (req, res) => {
-    req.course.photo = undefined;
-    return res.json(req.course);
+    return res.json(req.lessons);
 };
 
 
-//CREATE COURSE
+//LEASON CREATE FOR COURSE
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            return res.status(400).json({
-                error: "Image could not be uploaded"
-            });
-        }
+    form.parse(req, (err, fields) => {
         // check for all fields
         const {
             name,
             description,
-            teacher,
+            body,
+            course
         } = fields;
 
         if (
             !name ||
             !description ||
-            !teacher 
+            !body ||
+            !course 
         
         ) {
             return res.status(400).json({
@@ -53,21 +50,11 @@ exports.create = (req, res) => {
             });
         }
 
-        let course = new Course(fields);
+        let lessons = new Lesson(fields);
 
 
-        if (files.photo) {
-            // console.log("FILES PHOTO: ", files.photo);
-            if (files.photo.size > 1000000) {
-                return res.status(400).json({
-                    error: "Image should be less than 1mb in size"
-                });
-            }
-            course.photo.data = fs.readFileSync(files.photo.path);
-            course.photo.contentType = files.photo.type;
-        }
-
-        course.save((err, result) => {
+        
+        lessons.save((err, result) => {
             if (err) {
                 return res.status(400).json({
                     error: errorHandler(err)
@@ -79,51 +66,34 @@ exports.create = (req, res) => {
 };
 
 
-//REMOVE COURSE
+//REMOVE LEASON FOR COURSE
 exports.remove = (req, res) => {
-    let course = req.course;
-    course.remove((err, deleteCourse) => {
+    let lessons = req.lessons;
+    lessons.remove((err, deleteLesson) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
             });
         }
         res.json({
-            message: "Course deleted successfully"
+            message: "Lesson deleted successfully"
         });
     });
 };
 
 
-//UPDATE COURSE
+//UPDATE LESOON
 exports.update = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            return res.status(400).json({
-                error: "Image could not be uploaded"
-            });
-        }
+    form.parse(req, (err, fields) => {
+        
 
-        let course = req.course;
-        course = _.extend(course, fields);
+        let lessons = req.lessons;
+        lessons = _.extend(lessons, fields);
 
-        // 1kb = 1000
-        // 1mb = 1000000
-
-        if (files.photo) {
-            // console.log("FILES PHOTO: ", files.photo);
-            if (files.photo.size > 1000000) {
-                return res.status(400).json({
-                    error: "Image should be less than 1mb in size"
-                });
-            }
-            course.photo.data = fs.readFileSync(files.photo.path);
-            course.photo.contentType = files.photo.type;
-        }
-
-        course.save((err, result) => {
+        
+        lessons.save((err, result) => {
             if (err) {
                 return res.status(400).json({
                     error: errorHandler(err)
@@ -134,13 +104,14 @@ exports.update = (req, res) => {
     });
 };
 
-//LIST COURSE
+
+//LIST ALL LESSON
 exports.list = (req, res) => {
     let order = req.query.order ? req.query.order : "asc";
     let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
     let limit = req.query.limit ? parseInt(req.query.limit) : 6;
 
-    Course.find()
+    Lesson.find()
       
         .sort([[sortBy, order]])
         .limit(limit)
@@ -153,4 +124,26 @@ exports.list = (req, res) => {
             res.json(course);
         });
 };
+
+
+//LIST ALL LESSON FOR COURSE
+exports.listbyCourse = (req, res) => {
+    let order = req.query.order ? req.query.order : "asc";
+    let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
+ 
+
+    Lesson.find({course: req.course._id})
+        .populate("course", "_id name")
+        .sort([[sortBy, order]])
+        .exec((err, course) => {
+            if (err) {
+                return res.status(400).json({
+                    error: "Course not found"
+                });
+            }
+            res.json(course);
+        });
+};
+
+
 
