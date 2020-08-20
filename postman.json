@@ -1,0 +1,691 @@
+{
+	"info": {
+		"_postman_id": "dd6dab2b-ae71-4c73-82b1-062e3d0e3fe8",
+		"name": "Node.js Course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SIGNUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Pedro\",\n\t\"email\": \"pedro@gmail.com\",\n\t\"password\": \"chillan2021\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGNIN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"eliasmm2805@gmail.com\",\n\t\"password\": \"chillan2021\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGNOUT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/signout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE LEASSON FOR COURSE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjI0M2I0MDA2ZjdiZTA4ZThlODk4ZDkiLCJpYXQiOjE1OTYyMTE2MzJ9.JJaaPO_49yPMivi6p9ABK0ryQJshZ0ZRCf-u4-av7Xs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"React\",\n\t\"description\":\"Leasson course N1\",\n\t\"body\":\"TEST\",\n\t\"course\",:\"5f24420de98849258c8dd71e\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/category/create/5ed43b5f7ba660409c22ef3f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"category",
+						"create",
+						"5ed43b5f7ba660409c22ef3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE COURSE WITH UPLOAD IMAGE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjBlMGRiNTE0MWRjNjExYWIzZmMzMzQiLCJpYXQiOjE1OTQ3NTY1NTF9.185-tvonEKdlII3YalgRm062K6xXwkFOBw_kmVZT5IQ"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Course 1ºA",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Course Nivel 1 Letter A",
+							"type": "text"
+						},
+						{
+							"key": "teacher",
+							"value": "5f0e0955e241d500bbee8174",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "Captura de Pantalla 2020-07-08 a la(s) 11.04.09.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/course/create/5f0e0db5141dc611ab3fc334",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"course",
+						"create",
+						"5f0e0db5141dc611ab3fc334"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ LEASSON",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/product/5ed5610bb99832331ce082aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"product",
+						"5ed5610bb99832331ce082aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE LEASSON",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/product/5ed5610bb99832331ce082aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"product",
+						"5ed5610bb99832331ce082aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE LEASSON",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "PHP Book Updated",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "My First book on php",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "5ed548237dcec01598a7fe32",
+							"type": "text"
+						},
+						{
+							"key": "shipping",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"value": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/product/5ed569159b23ac06180e857a/5ed43b5f7ba660409c22ef3f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"product",
+						"5ed569159b23ac06180e857a",
+						"5ed43b5f7ba660409c22ef3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ COURSE",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/category/5ed548237dcec01598a7fe32",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"category",
+						"5ed548237dcec01598a7fe32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE COURSE",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjI0M2I0MDA2ZjdiZTA4ZThlODk4ZDkiLCJpYXQiOjE1OTc4OTEzMzZ9.vhlkXSSiEWMSCPMudPnfbP9l0aYwwv1HcJar-EcCnmE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Curso Node v4",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/course/update/5f3df96b4ef6f03d086f83dc/5f243b4006f7be08e8e898d9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"course",
+						"update",
+						"5f3df96b4ef6f03d086f83dc",
+						"5f243b4006f7be08e8e898d9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE COURSE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"NODE JS\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/category/5ed548237dcec01598a7fe32/5ed43b5f7ba660409c22ef3f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"category",
+						"5ed548237dcec01598a7fe32",
+						"5ed43b5f7ba660409c22ef3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST ALL LEASSON COURSE",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST ALL COURSES",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/course?sortBy=sold&order=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"course"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "sold"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST ALL STUDENT FOR COURSE",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/products/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST STUDENT BY SEARCH",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjI0M2I0MDA2ZjdiZTA4ZThlODk4ZDkiLCJpYXQiOjE1OTYyMTE2MzJ9.JJaaPO_49yPMivi6p9ABK0ryQJshZ0ZRCf-u4-av7Xs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"eamanriquez@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/search/5f243b4006f7be08e8e898d9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"search",
+						"5f243b4006f7be08e8e898d9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VIEW PHOTO COURSE",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTEwNDA1Mjd9.PF28YksEXXSxj883KhUL2T0sRqUORL_KGGNmWQIKG_w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/product/photo/5ed55d305a89dd4b6cd116a8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"product",
+						"photo",
+						"5ed55d305a89dd4b6cd116a8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ USER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ0M2I1ZjdiYTY2MDQwOWMyMmVmM2YiLCJpYXQiOjE1OTE1NzIzMzV9.iWDdxR9I1dQy4AAvy0WryLaUa3w-aa-UOTiR5bqak4E",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/user/5ed43b5f7ba660409c22ef3f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"5ed43b5f7ba660409c22ef3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USER",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjI0Mzc1YzlhODFiMzNmZTBjMmRhZjIiLCJpYXQiOjE1OTYyMDkwNDh9.6pqMroNUNsPgb6FLuMeibrARnGoHuuAdWH3eSOgcfn4"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Elias M\",\n\t\"role\":\"0\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/5f24375c9a81b33fe0c2daf2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"5f24375c9a81b33fe0c2daf2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENROLL STUDENT FOR COURSE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjNlOWY1MjkxZjEwNDQxNGMyMDE4YzAiLCJpYXQiOjE1OTc5NTM0NDJ9.hdOd0EwDY0RFxDmBNaH9r3VCoohEzLRNNBMRhPBAp5M",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"course\":\"5f3e0447b55bb812a0a32573\",\r\n    \"status\":\"Enroll\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/enroll/create/5f3e9f5291f104414c2018c0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"enroll",
+						"create",
+						"5f3e9f5291f104414c2018c0"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST COURSE FOR STUDENT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STATUS STUDENT ENROLL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST ALL USER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
